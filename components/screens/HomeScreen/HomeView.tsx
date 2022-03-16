@@ -22,6 +22,7 @@ interface IHomeViewProps {
 }
 
 const HomeView: FC<IHomeViewProps> = ({ products, accessories, onPressItem }: IHomeViewProps) => {
+    
     const renderItem = ({ item }: { item: ProductDataType }) => {
         return <ProductCard productData={item} onPressItem={onPressItem} />;
     };

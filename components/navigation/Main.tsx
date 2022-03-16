@@ -1,10 +1,11 @@
 import React, { FC } from "react";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "../screens/HomeScreen/HomeScreen";
 import MyCartScreen from "../screens/MyCartScreen/MyCartScreen";
 import ProductInfoScreen from "../screens/ProductInfoScreen/ProductInfoScreen";
+import { createStackNavigator } from "@react-navigation/stack";
+import { AppParams } from "./NavigationTypes";
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator<AppParams>();
 
 const Main: FC = () => {
     return (
@@ -14,7 +15,7 @@ const Main: FC = () => {
             }}>
             <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen name="MyCart" component={MyCartScreen} />
-            <Stack.Screen name="Product" component={ProductInfoScreen} />
+            <Stack.Screen name="Detail" component={ProductInfoScreen} />
         </Stack.Navigator>
     );
 };
