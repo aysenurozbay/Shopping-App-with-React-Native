@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC } from "react";
 import {
     View,
     StyleSheet,
@@ -8,22 +8,22 @@ import {
     StatusBar,
     ScrollView,
 } from "react-native";
+
 import ProductCard from "../../cards/ProductCard";
+
 import { COLOURS, ProductDataType } from "../../database/Database";
+
 import CartIcon from "../../icons/CartIcon";
 
 interface IHomeViewProps {
-    items: Array<ProductDataType>;
+    products: Array<ProductDataType>;
+    accessories: Array<ProductDataType>;
     onPressItem: (item: ProductDataType) => void;
 }
 
-const HomeView: FC<IHomeViewProps> = ({ items, onPressItem }: IHomeViewProps) => {
-    const [productList, setproductList] = useState<Array<ProductDataType>>([]);
-
-    useEffect(() => {});
-
+const HomeView: FC<IHomeViewProps> = ({ products, accessories, onPressItem }: IHomeViewProps) => {
     const renderItem = ({ item }: { item: ProductDataType }) => {
-        return <ProductCard productData={item} />;
+        return <ProductCard productData={item} onPressItem={onPressItem} />;
     };
 
     return (
@@ -57,7 +57,24 @@ const HomeView: FC<IHomeViewProps> = ({ items, onPressItem }: IHomeViewProps) =>
                         <FlatList
                             horizontal
                             showsHorizontalScrollIndicator={false}
-                            data={items}
+                            data={products}
+                            renderItem={renderItem}
+                        />
+                    </View>
+                </View>
+                <View style={styles.productContainer}>
+                    <View style={styles.firsList}>
+                        <View style={styles.innerRow}>
+                            <Text style={styles.productsText}>Products</Text>
+                            <Text style={styles.quantityText}>41</Text>
+                        </View>
+                        <Text style={styles.seeText}>SeeAll</Text>
+                    </View>
+                    <View style={styles.productListcontainer}>
+                        <FlatList
+                            horizontal
+                            showsHorizontalScrollIndicator={false}
+                            data={accessories}
                             renderItem={renderItem}
                         />
                     </View>

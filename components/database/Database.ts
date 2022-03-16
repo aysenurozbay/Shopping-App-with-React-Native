@@ -9,6 +9,23 @@ export const COLOURS = {
     backgroundDark: "#777777",
 };
 
+export type ProductDataType = {
+    id: number;
+    category: string;
+    productName: string;
+    productPrice: number;
+    description: string;
+    isOff: boolean;
+    productImage: string;
+    offPercentage?: number;
+    isAvailable: boolean;
+    productImageList: Array<{
+        first: string;
+        second: string;
+        third: string;
+    }>;
+};
+
 export const Items: Array<ProductDataType> = [
     {
         id: 1,
@@ -109,22 +126,3 @@ export const Items: Array<ProductDataType> = [
         ],
     },
 ];
-
-export type ProductDataType = {
-    category: Array<{
-        id: number;
-        category: string;
-        productName: string;
-        productPrice: number;
-        description: string;
-        isOff: boolean;
-        productImage: string;
-        offPercentage?: number;
-        isAvailable: boolean;
-        productImageList: Array<{
-            first: string;
-            second: string;
-            third: string;
-        }>;
-    }>;
-};
